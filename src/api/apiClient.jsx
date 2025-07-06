@@ -13,7 +13,7 @@ apiClient.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`; // 토큰 추가
   }
-  console.log("Request Headers:", config.headers); // 여기서 헤더 확인
+
   return config;
 });
 
