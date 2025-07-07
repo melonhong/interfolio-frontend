@@ -13,8 +13,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 
-export default function DrawerListTop({ isLoggedIn, open = true }) {
+export default function DrawerListTop() {
   const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("token");
   const menuConfigTop = {
     // 위쪽 메뉴
     loggedIn: [
