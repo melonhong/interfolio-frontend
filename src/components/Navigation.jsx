@@ -37,13 +37,17 @@ const useNavigation = () => {
           title: "마이페이지",
           icon: <AccountCircleIcon />,
         },
-        { segment: "#logout", title: "로그아웃", icon: <LogoutIcon /> },
+        { segment: "#auth/logout", title: "로그아웃", icon: <LogoutIcon /> },
       ];
     } else {
       return [
         ...mainSection,
         { kind: "header", title: "계정" },
-        { segment: "login", title: "로그인 및 회원가입", icon: <LoginIcon /> },
+        {
+          segment: "auth/login",
+          title: "로그인 및 회원가입",
+          icon: <LoginIcon />,
+        },
       ];
     }
   }, [isLoggedIn]);
