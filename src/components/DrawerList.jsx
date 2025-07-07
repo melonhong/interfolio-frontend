@@ -40,8 +40,7 @@ export default function DrawerListTop({ isLoggedIn, open = true }) {
       { text: "로그아웃", icon: <LogoutIcon />, path: "/#logout" },
     ],
     notLoggedIn: [
-      { text: "로그인", icon: <LoginIcon />, path: "/#login" },
-      { text: "회원가입", icon: <PersonAddIcon />, path: "/#login" },
+      { text: "로그인 및 회원가입", icon: <LoginIcon />, path: "/auth" },
     ],
   };
 
@@ -69,7 +68,7 @@ export default function DrawerListTop({ isLoggedIn, open = true }) {
       <List>
         {currentMenuBottom.map((item, index) => (
           <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => handleMenuClick(item.path)}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
