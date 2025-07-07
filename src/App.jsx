@@ -1,24 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Test from "./pages/Test/Test";
-import Home from "./pages/Home/Home";
-import Auth from "./pages/Auth/Auth";
+import * as React from "react";
+import { ReactRouterAppProvider } from "@toolpad/core/react-router";
+import { Outlet } from "react-router";
+import useNavigation from "./components/Navigation";
 
-function App() {
+const BRANDING = {
+  title: "Interfolio",
+  logo: (
+    <img
+      src="https://visla.kr/wp/wp-content/uploads/2014/10/Lacoste1.jpg"
+      alt="Interfolio Logo"
+      style={{ height: 32 }}
+    />
+  ),
+};
+
+const App = () => {
+  const NAVIGATION = useNavigation();
   return (
-    <Router>
-      <Routes>
-        {/* 레이아웃 없이 독립적으로 렌더링 */}
-        <Route path="/auth" element={<Auth />} />
-
-        {/* 레이아웃이 적용되는 라우트들 */}
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/test" element={<Test />} />
-        </Route>
-      </Routes>
-    </Router>
+    <ReactRouterAppProvider navigation={NAVIGATION} branding={BRANDING}>
+      <Outlet />
+    </ReactRouterAppProvider>
   );
-}
+};
 
 export default App;
