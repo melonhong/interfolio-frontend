@@ -1,13 +1,14 @@
-import { Outlet } from "react-router-dom";
-import MiniDrawer from "./MiniDrawer";
+import * as React from "react";
+import { Outlet } from "react-router";
+import { DashboardLayout } from "@toolpad/core/DashboardLayout";
+import { PageContainer } from "@toolpad/core/PageContainer";
 
-function Layout() {
+export default function Layout() {
   return (
-    <MiniDrawer title="Interfolio">
-      {/* Outlet을 children으로 넘김 */}
-      <Outlet />
-    </MiniDrawer>
+    <DashboardLayout>
+      <PageContainer>
+        <Outlet />
+      </PageContainer>
+    </DashboardLayout>
   );
 }
-
-export default Layout;

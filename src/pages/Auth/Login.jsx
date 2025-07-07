@@ -22,11 +22,13 @@ const signIn = async (provider) => {
   return Promise.resolve({ error: "Unsupported provider" });
 };
 
-export default function OAuthSignInPage() {
+const Login = () => {
   const theme = useTheme();
   return (
     <AppProvider theme={theme}>
       <SignInPage signIn={signIn} providers={providers} />
     </AppProvider>
   );
-}
+};
+
+export default Login;
