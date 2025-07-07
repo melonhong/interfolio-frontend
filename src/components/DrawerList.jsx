@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -14,28 +15,33 @@ import LoginIcon from "@mui/icons-material/Login";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 export default function DrawerListTop({ isLoggedIn, open = true }) {
+  const navigate = useNavigate();
   const menuConfigTop = {
     // 위쪽 메뉴
     loggedIn: [
-      { text: "홈", icon: <HomeIcon /> },
-      { text: "포트폴리오", icon: <TopicIcon /> },
-      { text: "면접", icon: <RecordVoiceOverIcon /> },
+      { text: "홈", icon: <HomeIcon />, path: "/" },
+      { text: "포트폴리오", icon: <TopicIcon />, path: "/test" },
+      { text: "면접", icon: <RecordVoiceOverIcon />, path: "/#interview" },
     ],
     notLoggedIn: [
-      { text: "홈", icon: <HomeIcon /> },
-      { text: "포트폴리오", icon: <TopicIcon /> },
+      { text: "홈", icon: <HomeIcon />, path: "/" },
+      { text: "포트폴리오", icon: <TopicIcon />, path: "/#portfolios" },
     ],
+  };
+
+  const handleMenuClick = (path) => {
+    navigate(path);
   };
 
   const menuConfigBottom = {
     // 아래쪽 메뉴
     loggedIn: [
-      { text: "마이페이지", icon: <AccountCircleIcon /> },
-      { text: "로그아웃", icon: <LogoutIcon /> },
+      { text: "마이페이지", icon: <AccountCircleIcon />, path: "/#mypage" },
+      { text: "로그아웃", icon: <LogoutIcon />, path: "/#logout" },
     ],
     notLoggedIn: [
-      { text: "로그인", icon: <LoginIcon /> },
-      { text: "회원가입", icon: <PersonAddIcon /> },
+      { text: "로그인", icon: <LoginIcon />, path: "/#login" },
+      { text: "회원가입", icon: <PersonAddIcon />, path: "/#login" },
     ],
   };
 
@@ -52,7 +58,7 @@ export default function DrawerListTop({ isLoggedIn, open = true }) {
       <List>
         {currentMenuTop.map((item, index) => (
           <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => handleMenuClick(item.path)}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
