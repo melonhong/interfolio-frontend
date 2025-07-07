@@ -4,34 +4,36 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App";
 import Layout from "./components/Layout";
 import Home from "./pages/Home/Home";
-import Auth from "./pages/Auth/Auth";
+import Login from "./pages/Auth/Login";
 
 const router = createBrowserRouter([
-  // 라우터 구성
   {
-    Component: App, // root layout route
+    path: "/",
+    Component: App,
     children: [
+      // 메인 앱 라우트 (레이아웃 적용)
       {
-        // 레이아웃 적용
-        path: "/",
+        path: "",
         Component: Layout,
         children: [
-          {
-            path: "",
-            Component: Home,
-          },
+          { index: true, Component: Home },
+          { path: "portfolios", Component: Home },
+          { path: "interview", Component: Home },
+          { path: "mypage", Component: Home },
         ],
       },
+      // 인증 관련 라우트 (레이아웃 미적용)
       {
-        // 레이아웃 미적용
-        path: "/",
+        path: "auth",
         children: [
-          {
-            path: "auth",
-            Component: Auth,
-          },
+          { path: "login", Component: Login },
+          { path: "logout", Component: Login },
         ],
       },
+      // 기타 독립 페이지들 (레이아웃 미적용)
+      { path: "landing", Component: Home },
+      { path: "privacy", Component: Home },
+      { path: "terms", Component: Home },
     ],
   },
 ]);
