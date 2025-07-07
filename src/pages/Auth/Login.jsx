@@ -22,7 +22,7 @@ const signIn = async (provider) => {
   return Promise.resolve({ error: "Unsupported provider" });
 };
 
-const Auth = () => {
+const Login = () => {
   const theme = useTheme();
   return (
     <AppProvider theme={theme}>
@@ -31,4 +31,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Login;
