@@ -12,7 +12,6 @@ import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 export default function DrawerListTop({ isLoggedIn, open = true }) {
   const navigate = useNavigate();
