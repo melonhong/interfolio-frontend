@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { SignInPage } from "@toolpad/core/SignInPage";
 import { useTheme } from "@mui/material/styles";
@@ -12,27 +11,22 @@ const providers = [
   { id: "linkedin", name: "LinkedIn" },
 ];
 
-// preview-end
-
 const signIn = async (provider) => {
-  // preview-start
-  const promise = new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(`Sign in with ${provider.id}`);
-      resolve({ error: "This is a fake error" });
-    }, 500);
-  });
-  // preview-end
-  return promise;
+  // 구글 로그인일 때 백엔드 OAuth 경로로 리다이렉트
+  if (provider.id === "google") {
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    return; // 리다이렉트 후 함수 종료
+  }
+
+  // 다른 provider가 있을 경우를 위한 기본 처리
+  return Promise.resolve({ error: "Unsupported provider" });
 };
 
 export default function OAuthSignInPage() {
   const theme = useTheme();
   return (
-    // preview-start
     <AppProvider theme={theme}>
       <SignInPage signIn={signIn} providers={providers} />
     </AppProvider>
-    // preview-end
   );
 }
