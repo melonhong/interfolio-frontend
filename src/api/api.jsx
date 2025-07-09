@@ -1,5 +1,12 @@
 import apiClient from "./apiClient";
 
-export function fetchLoginOnly() {
-  return apiClient.get("/loginonly").then((response) => response.data);
-}
+export const getLogout = async () => {
+  try {
+    const response = await apiClient
+      .get("/logout")
+      .then((response) => response.data);
+    return response;
+  } catch (error) {
+    console.error("Error: " + error.response.status);
+  }
+};
