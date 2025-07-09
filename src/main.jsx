@@ -5,6 +5,7 @@ import App from "./App";
 import Layout from "./components/Layout";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login";
+import Logout from "./pages/Auth/Logout";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         path: "auth",
         children: [
           { path: "login", Component: Login },
-          { path: "logout", Component: Login },
+          { path: "logout", Component: Logout },
         ],
       },
       // 기타 독립 페이지들 (레이아웃 미적용)
