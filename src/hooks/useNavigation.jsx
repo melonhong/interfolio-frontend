@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../context/AuthContext";
 import HomeIcon from "@mui/icons-material/Home";
 import TopicIcon from "@mui/icons-material/Topic";
 import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
@@ -8,7 +8,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 
 const useNavigation = () => {
-  const isLoggedIn = useAuth();
+  const { isLoggedIn } = useAuth();
 
   const NAVIGATION = useMemo(() => {
     // 공통 메인 섹션
@@ -37,7 +37,7 @@ const useNavigation = () => {
           title: "마이페이지",
           icon: <AccountCircleIcon />,
         },
-        { segment: "#auth/logout", title: "로그아웃", icon: <LogoutIcon /> },
+        { segment: "auth/logout", title: "로그아웃", icon: <LogoutIcon /> },
       ];
     } else {
       return [
